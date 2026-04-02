@@ -1,11 +1,182 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nossa PG</title>
+    <title>Aeroporto Internacional</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #004080;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #0066cc;
+        }
+
+        nav a {
+            color: white;
+            padding: 15px 20px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            background-color: #004080;
+        }
+
+        section {
+            padding: 50px 20px;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        h2 {
+            color: #004080;
+        }
+
+        .flights-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .flights-table th, .flights-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .flights-table th {
+            background-color: #0066cc;
+            color: white;
+        }
+
+        footer {
+            background-color: #004080;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .map-container {
+            text-align: center;
+        }
+
+        .map-container iframe {
+            width: 80%;
+            height: 400px;
+            border: none;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            box-sizing: border-box;
+        }
+
+        .contact-form button {
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            cursor: pointer;
+        }
+
+        .contact-form button:hover {
+            background-color: #004080;
+        }
+    </style>
 </head>
 <body>
-    
+    <header>
+        <h1>Aeroporto Internacional</h1>
+        <p>Conectando você ao mundo!</p>
+    </header>
+
+    <nav>
+        <a href="#voos">Voos</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#mapa">Mapa</a>
+        <a href="#contato">Contato</a>
+    </nav>
+
+    <section id="voos">
+        <h2>Voos Recentes</h2>
+        <table class="flights-table">
+            <tr>
+                <th>Voo</th>
+                <th>Origem</th>
+                <th>Destino</th>
+                <th>Status</th>
+                <th>Horário</th>
+            </tr>
+            <tr>
+                <td>AZ123</td>
+                <td>São Paulo</td>
+                <td>Lisboa</td>
+                <td>Em horário</td>
+                <td>14:30</td>
+            </tr>
+            <tr>
+                <td>GF456</td>
+                <td>Rio de Janeiro</td>
+                <td>Nova Iorque</td>
+                <td>Atrasado</td>
+                <td>15:15</td>
+            </tr>
+            <tr>
+                <td>LM789</td>
+                <td>Brasília</td>
+                <td>Paris</td>
+                <td>Cancelado</td>
+                <td>16:00</td>
+            </tr>
+        </table>
+    </section>
+
+    <section id="servicos">
+        <h2>Serviços do Aeroporto</h2>
+        <ul>
+            <li>Check-in e balcões de atendimento</li>
+            <li>Lounges VIP</li>
+            <li>Restaurantes e cafés</li>
+            <li>Transporte terrestre e aluguel de carros</li>
+            <li>Free Wi-Fi em todas as áreas</li>
+        </ul>
+    </section>
+
+    <section id="mapa">
+        <h2>Mapa do Aeroporto</h2>
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.000000!2d-46.000000!3d-23.000000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDAwJzAwLjAiUyA0NsKwMDAnMDAuMCJX!5e0!3m2!1spt-BR!2sbr!4v1610000000000!5m2!1spt-BR!2sbr" allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <section id="contato">
+        <h2>Contato</h2>
+        <form class="contact-form">
+            <input type="text" placeholder="Seu nome" required>
+            <input type="email" placeholder="Seu e-mail" required>
+            <textarea placeholder="Sua mensagem" rows="5" required></textarea>
+            <button type="submit">Enviar</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Aeroporto Internacional. Todos os direitos reservados.</p>
+    </footer>
 </body>
 </html>
