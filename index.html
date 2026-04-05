@@ -6,6 +6,37 @@
     <title>Nossa PG</title>
 </head>
 <body>
+    <div class="cadastro" style="text-align: center; margin-top: 50px; font-family: sans-serif;">
+    <h2>Crie sua conta grátis</h2>
     
+    <input type="text" id="usuario" placeholder="Nome de usuário" style="padding: 8px;"><br><br>
+    
+    <input type="password" id="senha" placeholder="Digite sua senha" style="padding: 8px;"><br><br>
+    
+    <button type="button" onclick="tentarCadastrar()" style="padding: 10px 20px; cursor: pointer; background-color: #007bff; color: white; border: none; border-radius: 5px;">
+        Finalizar Cadastro
+    </button>
+    
+    <div id="msg-troll" style="display: none; margin-top: 20px; padding: 15px; border: 1px solid red; background-color: #ffe6e6; color: red; border-radius: 5px; width: 300px; margin-left: auto; margin-right: auto;">
+        <strong>⚠️ ERRO DE SEGURANÇA:</strong><br>
+        Esta senha é idêntica à do usuário <strong>"Marcos_ADM"</strong>.<br>
+        Por favor, escolha uma senha que não pertença a outro administrador.
+    </div>
+</div>
+
+<script>
+    function tentarCadastrar() {
+        const user = document.getElementById('usuario').value;
+        const pass = document.getElementById('senha').value;
+        const msg = document.getElementById('msg-troll');
+
+        // Só mostra se o cara preencheu alguma coisa, pra ficar mais real
+        if (user !== "" && pass !== "") {
+            msg.style.display = 'block';
+        } else {
+            alert("Preencha todos os campos antes de continuar!");
+        }
+    }
+</script>
 </body>
 </html>
