@@ -1,42 +1,106 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nossa PG</title>
+    <title>Aeroporto Internacional</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #004080;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #0066cc;
+        }
+
+        nav a {
+            color: white;
+            padding: 15px 20px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            background-color: #004080;
+        }
+
+        section {
+            padding: 50px 20px;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        h2 {
+            color: #004080;
+        }
+
+        .flights-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .flights-table th, .flights-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .flights-table th {
+            background-color: #0066cc;
+            color: white;
+        }
+
+        footer {
+            background-color: #004080;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .map-container {
+            text-align: center;
+        }
+
+        .map-container iframe {
+            width: 80%;
+            height: 400px;
+            border: none;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            box-sizing: border-box;
+        }
+
+        .contact-form button {
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            cursor: pointer;
+        }
+
+        .contact-form button:hover {
+            background-color: #004080;
+        }
+    </style>
 </head>
 <body>
-    <div class="cadastro" style="text-align: center; margin-top: 50px; font-family: sans-serif;">
-    <h2>Crie sua conta grátis</h2>
     
-    <input type="text" id="usuario" placeholder="Nome de usuário" style="padding: 8px;"><br><br>
-    
-    <input type="password" id="senha" placeholder="Digite sua senha" style="padding: 8px;"><br><br>
-    
-    <button type="button" onclick="tentarCadastrar()" style="padding: 10px 20px; cursor: pointer; background-color: #007bff; color: white; border: none; border-radius: 5px;">
-        Finalizar Cadastro
-    </button>
-    
-    <div id="msg-troll" style="display: none; margin-top: 20px; padding: 15px; border: 1px solid red; background-color: #ffe6e6; color: red; border-radius: 5px; width: 300px; margin-left: auto; margin-right: auto;">
-        <strong>⚠️ ERRO DE SEGURANÇA:</strong><br>
-        Esta senha é idêntica à do usuário <strong>"Marcos_ADM"</strong>.<br>
-        Por favor, escolha uma senha que não pertença a outro administrador.
-    </div>
-</div>
-
-<script>
-    function tentarCadastrar() {
-        const user = document.getElementById('usuario').value;
-        const pass = document.getElementById('senha').value;
-        const msg = document.getElementById('msg-troll');
-
-        // Só mostra se o cara preencheu alguma coisa, pra ficar mais real
-        if (user !== "" && pass !== "") {
-            msg.style.display = 'block';
-        } else {
-            alert("Preencha todos os campos antes de continuar!");
-        }
-    }
-</script>
 </body>
 </html>
