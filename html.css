@@ -1,5 +1,47 @@
 
         /* --- ESTILOS GERAIS --- */
+        /* --- RESPONSIVIDADE (A MÁGICA PRO CELULAR) --- */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column; /* Logo em cima, texto embaixo */
+        text-align: center;
+        padding: 40px 15px;
+    }
+
+    header h1 { font-size: 2rem; } /* Diminui o título no celular */
+    
+    nav {
+        flex-wrap: wrap; /* Permite que os links "pulem" de linha */
+    }
+
+    nav a {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+        flex: 1 1 auto; /* Faz os links ocuparem o espaço disponível */
+        text-align: center;
+    }
+
+    section {
+        margin: 15px;
+        padding: 20px !important; /* Menos espaço sobrando nas bordas */
+    }
+
+    /* Faz a tabela não quebrar o layout (gera scroll lateral se precisar) */
+    .flights-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr; /* Um card por linha no celular */
+    }
+
+    #login-section input {
+        max-width: 100%; /* Input ocupa a largura toda */
+    }
+}
+        
         * { box-sizing: border-box; scroll-behavior: smooth; }
         body { font-family: 'Roboto', sans-serif; margin: 0; padding: 0; background-color: #f0f2f5; color: #333; }
 
