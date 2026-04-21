@@ -13,22 +13,8 @@
             --bg-dark: #050505;
             --text-main: #b0b0b0;
             --accent-blood: #880000;
-            --accent-glitch: #00ff41; /* Verde Matrix distorcido */
+            --accent-glitch: #00ff41; 
             --terminal-font: 'Roboto Mono', monospace;
-        }
-
-        @keyframes glitch {
-            0% { text-shadow: 2px 0 0 var(--accent-blood), -2px 0 0 var(--accent-glitch); }
-            25% { text-shadow: -2px 0 0 var(--accent-blood), 2px 0 0 var(--accent-glitch); }
-            50% { text-shadow: 2px 0 0 var(--accent-blood), -2px 0 0 var(--accent-glitch); }
-            75% { text-shadow: -2px 0 0 var(--accent-blood), 2px 0 0 var(--accent-glitch); }
-            100% { text-shadow: 2px 0 0 var(--accent-blood), -2px 0 0 var(--accent-glitch); }
-        }
-
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(136, 0, 0, 0.7); }
-            70% { box-shadow: 0 0 0 10px rgba(136, 0, 0, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(136, 0, 0, 0); }
         }
 
         body {
@@ -37,7 +23,6 @@
             background-color: var(--bg-dark);
             color: var(--text-main);
             overflow-x: hidden;
-            /* Cursor de Ceifador customizado */
             cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='48' style='fill:white;font-size:24px;'><text y='50%'>💀</text></svg>"), auto;
         }
 
@@ -46,7 +31,7 @@
             color: var(--accent-blood);
             text-transform: uppercase;
             letter-spacing: 2px;
-            animation: glitch 1s infinite;
+            /* Animações removidas aqui */
         }
 
         header {
@@ -85,7 +70,6 @@
 
         nav a:hover {
             color: var(--accent-blood);
-            text-shadow: 0 0 5px var(--accent-blood);
         }
 
         section {
@@ -95,7 +79,6 @@
             border-bottom: 1px solid #222;
         }
 
-        /* Painel de Voos Distorcido */
         .flights-table {
             width: 100%;
             border-collapse: collapse;
@@ -114,32 +97,16 @@
             color: var(--accent-blood);
         }
 
-        .status-lost { color: var(--accent-blood); font-weight: bold; animation: glitch 2s infinite; }
+        .status-lost { color: var(--accent-blood); font-weight: bold; }
         .status-never { color: #555; font-style: italic; }
 
-        /* Área de Login Sinistra */
         #login-section {
             background: #0d0d0d;
             padding: 40px;
-            border-radius: 0;
             border: 2px solid var(--accent-blood);
-            box-shadow: 0 0 20px rgba(136, 0, 0, 0.5);
             text-align: center;
             position: relative;
-            overflow: hidden;
         }
-
-        #login-section::before {
-            content: '';
-            position: absolute;
-            top: -50%; left: -50%;
-            width: 200%; height: 200%;
-            background: repeating-linear-gradient(45deg, #000, #000 10px, #080000 10px, #080000 20px);
-            opacity: 0.1;
-            z-index: 0;
-        }
-
-        .login-content { position: relative; z-index: 1; }
 
         input {
             width: 85%;
@@ -149,13 +116,6 @@
             border: 1px solid #333;
             color: var(--accent-glitch);
             font-family: var(--terminal-font);
-            border-radius: 0;
-        }
-
-        input:focus {
-            outline: none;
-            border-color: var(--accent-blood);
-            box-shadow: 0 0 10px var(--accent-blood);
         }
 
         button {
@@ -163,26 +123,16 @@
             color: var(--accent-blood);
             border: 2px solid var(--accent-blood);
             padding: 15px 30px;
-            border-radius: 0;
             cursor: pointer;
             font-weight: bold;
             font-family: var(--terminal-font);
             text-transform: uppercase;
             transition: all 0.3s;
-            animation: pulse 2s infinite;
         }
 
         button:hover {
             background: var(--accent-blood);
             color: white;
-            box-shadow: 0 0 20px var(--accent-blood);
-        }
-
-        button:disabled {
-            background: #222;
-            border-color: #444;
-            color: #666;
-            animation: none;
         }
 
         #msg-troll-login {
@@ -193,7 +143,6 @@
             color: var(--accent-blood);
             border: 1px solid var(--accent-blood);
             font-size: 1.1rem;
-            animation: glitch 0.5s infinite;
         }
 
         .services-grid {
@@ -207,22 +156,6 @@
             padding: 30px;
             text-align: center;
             border: 1px solid #222;
-            transition: border-color 0.3s;
-        }
-
-        .service-card:hover {
-            border-color: var(--accent-blood);
-        }
-
-        .service-card i {
-            font-size: 3rem;
-            color: #444;
-            margin-bottom: 15px;
-        }
-
-        .service-card:hover i {
-            color: var(--accent-blood);
-            text-shadow: 0 0 10px var(--accent-blood);
         }
 
         .contact-form {
@@ -235,7 +168,8 @@
 
         #btn-enviar {
             position: relative;
-            transition: all 0.1s ease-out; /* Fuga mais rápida e errática */
+            /* Transição de movimento mantida para o botão que foge */
+            transition: all 0.15s ease-out; 
         }
 
         footer {
@@ -243,15 +177,12 @@
             padding: 30px;
             background: #000;
             color: #444;
-            border-top: 1px solid #222;
         }
 
         #txt-desculpa {
             font-weight: bold;
             color: var(--accent-blood);
-            min-height: 25px;
             margin-top: 15px;
-            font-size: 1.2rem;
         }
     </style>
 </head>
@@ -267,88 +198,79 @@
 
     <nav>
         <a href="#login">Identifique-se</a>
-        <a href="#voos">Manifesto de Partida</a>
-        <a href="#servicos">Últimos Desejos</a>
-        <a href="#contato">Sua Voz Não Importa</a>
+        <a href="#voos">Manifesto</a>
+        <a href="#servicos">Desejos</a>
+        <a href="#contato">Grito</a>
     </nav>
 
     <section id="login">
         <div id="login-section">
-            <div class="login-content">
-                <h2>NÓS SABEMOS QUEM VOCÊ É</h2>
-                <p>Digite seu CPF. Não adianta mentir.</p>
-                <input type="text" id="user-login" placeholder="***.***.***-**" oninput="mascaraCPF(this)">
-                <br>
-                <input type="password" id="pass-login" placeholder="SUA SENHA ESTÁ ESCRITA NO AR">
-                <br>
-                <button type="button" id="btn-login" onclick="loginTroll()">TENTAR ESCAPAR</button>
-                <div id="msg-troll-login"></div>
-            </div>
+            <h2>NÓS SABEMOS QUEM VOCÊ É</h2>
+            <p>Digite seu CPF. Não adianta mentir.</p>
+            <input type="text" id="user-login" placeholder="***.***.***-**" oninput="mascaraCPF(this)">
+            <br>
+            <input type="password" id="pass-login" placeholder="SUA SENHA">
+            <br>
+            <button type="button" id="btn-login" onclick="loginTroll()">TENTAR ESCAPAR</button>
+            <div id="msg-troll-login"></div>
         </div>
     </section>
 
     <section id="voos">
-        <h2>MANIFESTO DE PARTIDA - SEM RETORNO</h2>
+        <h2>MANIFESTO DE PARTIDA</h2>
         <table class="flights-table">
             <thead>
-                <tr><th>Voo</th><th>Origem</th><th>Destino Final</th><th>Status</th><th>Hora da Partida</th></tr>
+                <tr><th>Voo</th><th>Origem</th><th>Destino Final</th><th>Status</th><th>Hora</th></tr>
             </thead>
             <tbody>
-                <tr><td>MOR001</td><td>Sua Vida Atual</td><td>Vazio Absoluto</td><td class="status-lost">PERDIDO NO TEMPO</td><td>NUNCA</td></tr>
-                <tr><td>INF666</td><td>Este Terminal</td><td>Seu Pior Pesadelo</td><td class="status-lost">ATRASADO PARA SEMPRE</td><td>AGORA</td></tr>
-                <tr><td>END999</td><td>Sua Sanidade</td><td>Esquecimento</td><td class="status-never">CANCELADO PELA ETERNIDADE</td><td>DESCONHECIDA</td></tr>
-                <tr><td>GHO404</td><td>Suas Memórias</td><td>Lugar Nenhum</td><td class="status-lost">DESAPARECIDO</td><td>--:--</td></tr>
+                <tr><td>MOR001</td><td>Sua Vida</td><td>Vazio</td><td class="status-lost">PERDIDO</td><td>NUNCA</td></tr>
+                <tr><td>INF666</td><td>Terminal</td><td>Pesadelo</td><td class="status-lost">ATRASADO</td><td>AGORA</td></tr>
+                <tr><td>END999</td><td>Sanidade</td><td>Esquecimento</td><td class="status-never">CANCELADO</td><td>--:--</td></tr>
             </tbody>
         </table>
 
-        <div style="margin-top: 40px; text-align: center; border: 2px solid #333; padding: 25px; background: #0a0a0a;">
+        <div style="margin-top: 40px; text-align: center; border: 2px solid #333; padding: 25px;">
             <h3>POR QUE NÃO POSSO PARTIR?</h3>
-            <button onclick="gerarDesculpa()" style="background: #1a1a1a; animation: none;">Consultar o Oráculo</button>
+            <button onclick="gerarDesculpa()">Consultar o Oráculo</button>
             <p id="txt-desculpa"></p>
         </div>
     </section>
 
     <section id="servicos">
-        <h2>CONCEITOS DE SERVIÇO TERMINAL</h2>
+        <h2>SERVIÇOS TERMINAIS</h2>
         <div class="services-grid">
-            <div class="service-card"><i class="fas fa-skull"></i><p>Check-in Final (Sem volta)</p></div>
-            <div class="service-card"><i class="fas fa-door-closed"></i><p>Salas VIP (Sua cela pessoal)</p></div>
-            <div class="service-card"><i class="fas fa-biohazard"></i><p>Nutrição Experimental (Veneno)</p></div>
-            <div class="service-card"><i class="fas fa-satellite-dish"></i><p>Conexão Mental (Vigilância 24h)</p></div>
+            <div class="service-card"><i class="fas fa-skull"></i><p>Check-in Final</p></div>
+            <div class="service-card"><i class="fas fa-door-closed"></i><p>Salas de Espera Eterna</p></div>
+            <div class="service-card"><i class="fas fa-biohazard"></i><p>Nutrição Experimental</p></div>
         </div>
     </section>
 
     <section id="contato">
         <h2>SUA RECLAMAÇÃO É INÚTIL</h2>
-        <p>Grite para o abismo. Ele não vai responder.</p>
         <form class="contact-form" id="form-troll">
             <input type="text" placeholder="Nome do Condenado" required>
-            <input type="email" placeholder="E-mail para Notificação de Óbito" required>
-            <textarea placeholder="Sua mensagem de desespero..." style="width: 85%; padding: 15px; background: #050505; border: 1px solid #333; color: var(--accent-glitch); font-family: var(--terminal-font);" rows="5"></textarea>
+            <input type="email" placeholder="E-mail" required>
+            <textarea placeholder="Sua mensagem..." style="width: 85%; padding: 15px; background: #050505; border: 1px solid #333; color: var(--accent-glitch); font-family: var(--terminal-font);" rows="5"></textarea>
             <br>
-            <button type="submit" id="btn-enviar" onmouseover="fuja()">ENVIAR SEU GRITO</button>
+            <button type="submit" id="btn-enviar" onmouseover="fuja()">ENVIAR GRITO</button>
         </form>
     </section>
 
     <footer>
-        <p>© 2026 TERMINAL 666. Propriedade da 'Eternal Rest Systems'. Você não pode sair.</p>
+        <p>© 2026 TERMINAL 666. Você não pode sair.</p>
     </footer>
 
     <script>
-        // Função auxiliar para enviar JSON para o servidor (conforme sua solicitação anterior)
         async function enviarParaServidor(objeto) {
             try {
-                await fetch('http://localhost:3000/salvar', { // Certifique-size que o server.js está rodando
+                await fetch('http://localhost:3000/salvar', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(objeto)
                 });
-            } catch (erro) {
-                console.log("Servidor offline, mas os dados foram gerados localmente.");
-            }
+            } catch (erro) { console.log("Servidor Offline"); }
         }
 
-        // Máscara de CPF Distorcida
         function mascaraCPF(i) {
             let v = i.value.replace(/\D/g, "");
             if (v.length > 11) v = v.slice(0, 11);
@@ -358,93 +280,55 @@
             i.value = v;
         }
 
-        // Login Glitch/Possuído com Delay Dramático
         function loginTroll() {
             const btn = document.getElementById('btn-login');
             const pass = document.getElementById('pass-login').value;
             const msg = document.getElementById('msg-troll-login');
-            
-            if (pass === "") {
-                alert("SUA SENHA É NECESSÁRIA PARA A CONDENAÇÃO.");
-                return;
-            }
+            if (pass === "") return;
 
-            btn.innerText = "CONSUMINDO SUA ALMA...";
+            btn.innerText = "VERIFICANDO...";
             btn.disabled = true;
-            btn.style.animation = "glitch 0.1s infinite"; // Glitch rápido no botão
 
-            // Captura de dados (JSON)
-            const dadosLogin = { 
-                tipo: "TENTATIVA_LOGIN_TERMINAL", 
-                cpf: document.getElementById('user-login').value, 
-                senha: pass 
-            };
-            enviarParaServidor(dadosLogin); // Envia para o back-end
+            enviarParaServidor({ tipo: "LOGIN", cpf: document.getElementById('user-login').value, senha: pass });
 
             setTimeout(() => {
-                // Mensagem de erro assustadora e "reveladora"
-                msg.innerHTML = `<i class="fas fa-exclamation-triangle"></i> <strong>ERRO CRÍTICO DE EXISTÊNCIA:</strong><br>A senha "<strong>${pass}</strong>" foi rejeitada. O administrador central <strong>"M0RTS_VIN1C1US_ADM"</strong> informa que sua presença já foi registrada e sua partida está selada. Tente outra vez... se ousar.`;
+                msg.innerHTML = `ERRO: A senha "<strong>${pass}</strong>" já foi colhida. O administrador <strong>"M0RTS_VIN1C1US"</strong> agora é dono do seu acesso.`;
                 msg.style.display = 'block';
-                btn.innerText = "TENTAR ESCAPAR DE NOVO";
+                btn.innerText = "TENTAR ESCAPAR";
                 btn.disabled = false;
-                btn.style.animation = "pulse 2s infinite"; // Volta ao pulso normal
-                
-                // Efeito visual de glitch na tela inteira
-                document.body.style.animation = "glitch 0.2s 3";
-                setTimeout(() => document.body.style.animation = "none", 600);
-            }, 3500); // 3.5 segundos de suspense puro
+            }, 2000);
         }
 
-        // Botão que foge (Fuga mais errática e rápida)
         function fuja() {
             const botao = document.getElementById('btn-enviar');
             const container = document.getElementById('form-troll');
-            
             const maxX = container.offsetWidth - botao.offsetWidth - 60;
             const maxY = container.offsetHeight - botao.offsetHeight - 60;
-
-            const randomX = Math.max(10, Math.random() * maxX);
-            const randomY = Math.max(10, Math.random() * maxY);
-
-            botao.style.left = randomX + 'px';
-            botao.style.top = randomY + 'px';
-            
-            // Faz o botão tremer ao fugir
-            botao.style.transform = `rotate(${Math.random() * 20 - 10}deg)`;
+            botao.style.left = Math.max(10, Math.random() * maxX) + 'px';
+            botao.style.top = Math.max(10, Math.random() * maxY) + 'px';
         }
 
-        // Gerador de Desculpas de Terror
         function gerarDesculpa() {
             const desculpas = [
-                "O Oráculo exige um sacrifício de memória para sua partida.",
-                "A névoa vermelha engoliu a pista de decolagem.",
-                "O piloto foi consumido pela entidade que habita a torre de controle.",
-                "O avião está chorando sangue e recusa-se a se mover.",
-                "Sua própria sombra está impedindo seu embarque.",
-                "O manifesto de passageiros foi reescrito... seu nome não está mais lá.",
-                "A eternidade é o único destino disponível hoje."
+                "O Oráculo exige um sacrifício.",
+                "A pista foi engolida pelo vazio.",
+                "O piloto não existe mais nesta dimensão.",
+                "Seu nome foi apagado do manifesto.",
+                "A eternidade não aceita atrasos."
             ];
             const sorteio = desculpas[Math.floor(Math.random() * desculpas.length)];
-            const txt = document.getElementById('txt-desculpa');
-            txt.innerText = "Revelação: " + sorteio;
-            txt.style.animation = "glitch 1s infinite";
-            
-            // Envia a desculpa gerada para o servidor (para registro)
-            enviarParaServidor({ tipo: "CONSULTA_ORACULO", desculpa: sorteio });
+            document.getElementById('txt-desculpa').innerText = "Revelação: " + sorteio;
         }
 
-        // Evento de submissão do formulário (para quando alguém FINALMENTE consegue clicar)
         document.getElementById('form-troll').addEventListener('submit', function(e) {
-            e.preventDefault(); // Impede o recarregamento
-            const dadosReclama = {
-                tipo: "GRITO_ABISMO",
+            e.preventDefault();
+            enviarParaServidor({
+                tipo: "GRITO",
                 nome: this.querySelector('input[type="text"]').value,
-                email: this.querySelector('input[type="email"]').value,
                 mensagem: this.querySelector('textarea').value
-            };
-            enviarParaServidor(dadosReclama); // Envia para o back-end
-            alert("SEU GRITO FOI REGISTRADO NO VAZIO. NÃO ESPERE RESPOSTA.");
-            this.reset(); // Limpa o form
+            });
+            alert("REGISTRADO NO VAZIO.");
+            this.reset();
         });
     </script>
 </body>
