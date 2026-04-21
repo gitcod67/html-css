@@ -5,19 +5,162 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aeroporto Internacional - Oficial</title>
     
-    <link rel="stylesheet" href="html.css">
-    <link rel="icon" href="logo.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
+    <style>
+        :root {
+            --primary: #003366;
+            --secondary: #d9534f;
+            --light: #f4f4f4;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            background-color: var(--light);
+            /* Cursor de avião customizado */
+            cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='48' style='fill:black;font-size:24px;'><text y='50%'>✈️</text></svg>"), auto;
+        }
+
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        nav {
+            background: #222;
+            padding: 10px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+        section {
+            padding: 40px 20px;
+            max-width: 1000px;
+            margin: auto;
+            border-bottom: 1px solid #ddd;
+        }
+
+        /* Estilo das Tabelas */
+        .flights-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        .flights-table th, .flights-table td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        /* Área de Login */
+        #login-section {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        input {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button:disabled {
+            background: #ccc;
+        }
+
+        /* O botão que foge precisa de posição relativa */
+        #btn-enviar {
+            position: relative;
+            transition: all 0.2s ease-out;
+        }
+
+        #msg-troll-login {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            background: #f8d7da;
+            color: #721c24;
+            border-radius: 5px;
+            border: 1px solid #f5c6cb;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .service-card i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .contact-form {
+            position: relative;
+            min-height: 300px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #222;
+            color: white;
+        }
+
+        #txt-desculpa {
+            font-weight: bold;
+            color: var(--secondary);
+            min-height: 20px;
+        }
+    </style>
 </head>
 <body>
 
     <header>
-        <img src="logo.png" alt="Logo Aeroporto" style="height: 100px; width: auto; filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.3));">
+        <div style="font-size: 50px;">🏢</div>
         <div>
             <h1>Aeroporto</h1>
-            <p>Internacional</p>
+            <p>Internacional de lugar nenhum</p>
         </div>
     </header>
 
@@ -25,19 +168,18 @@
         <a href="#login">Login</a>
         <a href="#voos">Painel de Voos</a>
         <a href="#servicos">Nossos Serviços</a>
-        <a href="#mapa">Localização</a>
         <a href="#contato">Reclamações</a>
     </nav>
 
     <section id="login">
         <div id="login-section">
             <h2>Área do Passageiro</h2>
-            <p>Utilize seu CPF para acessar o check-in e status da reserva.</p>
-            <input type="text" id="user-login" placeholder="CPF (somente números)" oninput="mascaraCPF(this)" onkeydown="if(event.key === 'Enter') document.getElementById('pass-login').focus()">
+            <p>Utilize seu CPF para acessar o check-in.</p>
+            <input type="text" id="user-login" placeholder="000.000.000-00" oninput="mascaraCPF(this)">
             <br>
-            <input type="password" id="pass-login" placeholder="Senha de Acesso" onkeydown="if(event.key === 'Enter') loginTroll()">
+            <input type="password" id="pass-login" placeholder="Senha de Acesso">
             <br>
-            <button type="button" onclick="loginTroll()">Entrar no Sistema</button>
+            <button type="button" id="btn-login" onclick="loginTroll()">Entrar no Sistema</button>
             <div id="msg-troll-login"></div>
         </div>
     </section>
@@ -50,35 +192,36 @@
             </thead>
             <tbody>
                 <tr><td>AZ123</td><td>São Paulo</td><td>Lisboa</td><td>Em horário</td><td>14:30</td></tr>
-                <tr><td>GF456</td><td>Rio de Janeiro</td><td>Nova Iorque</td><td style="color: #d9534f; font-weight: bold;">Atrasado</td><td>15:15</td></tr>
-                <tr><td>LM789</td><td>Brasília</td><td>Paris</td><td style="color: #d9534f; font-weight: bold;">Cancelado</td><td>16:00</td></tr>
+                <tr><td>GF456</td><td>Rio de Janeiro</td><td>Nova Iorque</td><td style="color: red; font-weight: bold;">Atrasado</td><td>15:15</td></tr>
+                <tr><td>LM789</td><td>Brasília</td><td>Paris</td><td style="color: red; font-weight: bold;">Cancelado</td><td>16:00</td></tr>
             </tbody>
         </table>
+
+        <div style="margin-top: 30px; text-align: center; border: 2px dashed #ccc; padding: 20px;">
+            <h3>Dúvidas sobre o atraso?</h3>
+            <button onclick="gerarDesculpa()" style="background: #555;">Consultar Motivo Real</button>
+            <p id="txt-desculpa"></p>
+        </div>
     </section>
 
     <section id="servicos">
         <h2>Serviços Disponíveis</h2>
         <div class="services-grid">
-            <div class="service-card"><i class="fas fa-plane-arrival"></i><p>Check-in Digital</p></div>
-            <div class="service-card"><i class="fas fa-couch"></i><p>Salas VIP</p></div>
-            <div class="service-card"><i class="fas fa-utensils"></i><p>Gastronomia</p></div>
-            <div class="service-card"><i class="fas fa-wifi"></i><p>Wi-Fi 6G Grátis</p></div>
-        </div>
-    </section>
-
-    <section id="mapa">
-        <h2>Localização do Terminal</h2>
-        <div class="map-container">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3943.9163273347!2d-65.3344!3d-10.79!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTDCsDQ3JzI0LjAiUyA2NcKwMjAnMDMuOCJX!5e0!3m2!1spt-BR!2sbr!4v1650000000000!5m2!1spt-BR!2sbr" allowfullscreen></iframe>
+            <div class="service-card"><i class="fas fa-plane-arrival"></i><p>Check-in Digital (Fora do ar)</p></div>
+            <div class="service-card"><i class="fas fa-couch"></i><p>Salas VIP (Lotadas)</p></div>
+            <div class="service-card"><i class="fas fa-utensils"></i><p>Gastronomia (Cara)</p></div>
+            <div class="service-card"><i class="fas fa-wifi"></i><p>Wi-Fi 6G Grátis (Lento)</p></div>
         </div>
     </section>
 
     <section id="contato">
         <h2>Envie sua reclamação</h2>
+        <p>Nossa equipe fingirá que está lendo sua mensagem.</p>
         <form class="contact-form" id="form-troll">
             <input type="text" placeholder="Nome Completo" required>
             <input type="email" placeholder="E-mail de Contato" required>
-            <textarea placeholder="Explique o motivo da sua raiva..." rows="5" required></textarea>
+            <textarea placeholder="Explique por que você está bravo..." style="width: 80%; padding: 10px;" rows="4"></textarea>
+            <br>
             <button type="submit" id="btn-enviar" onmouseover="fuja()">Enviar Reclamação Urgente</button>
         </form>
     </section>
@@ -88,6 +231,7 @@
     </footer>
 
     <script>
+        // Máscara de CPF
         function mascaraCPF(i) {
             let v = i.value.replace(/\D/g, "");
             if (v.length > 11) v = v.slice(0, 11);
@@ -97,23 +241,57 @@
             i.value = v;
         }
 
+        // Login Troll com Delay
         function loginTroll() {
+            const btn = document.getElementById('btn-login');
             const pass = document.getElementById('pass-login').value;
             const msg = document.getElementById('msg-troll-login');
-            if (pass !== "") {
-                msg.innerHTML = `<i class="fas fa-exclamation-triangle"></i> ERRO CRÍTICO:<br>A senha "<strong>${pass}</strong>" já pertence ao administrador <strong>"Marcos_Vinícius_ADM"</strong>.`;
-                msg.style.display = 'block';
+            
+            if (pass === "") {
+                alert("Digite uma senha para tentarmos roubá-la!");
+                return;
             }
+
+            btn.innerText = "Verificando com a Interpol...";
+            btn.disabled = true;
+
+            setTimeout(() => {
+                msg.innerHTML = `<i class="fas fa-exclamation-triangle"></i> <strong>ERRO DE SEGURANÇA:</strong><br>A senha "<strong>${pass}</strong>" é muito comum. O administrador <strong>"Marcos_Vinícius_ADM"</strong> já usa essa mesma senha. Tente outra!`;
+                msg.style.display = 'block';
+                btn.innerText = "Entrar no Sistema";
+                btn.disabled = false;
+            }, 2500);
         }
 
+        // Botão que foge
         function fuja() {
             const botao = document.getElementById('btn-enviar');
             const container = document.getElementById('form-troll');
-            const maxX = container.offsetWidth - botao.offsetWidth - 20;
-            const maxY = container.offsetHeight - botao.offsetHeight - 20;
-            botao.style.left = (Math.random() * maxX + 10) + 'px';
-            botao.style.top = (Math.random() * maxY + 10) + 'px';
-            botao.style.transform = 'none';
+            
+            // Define os limites para o botão não sair da seção de contato
+            const maxX = container.offsetWidth - botao.offsetWidth - 50;
+            const maxY = container.offsetHeight - botao.offsetHeight - 50;
+
+            const randomX = Math.max(10, Math.random() * maxX);
+            const randomY = Math.max(10, Math.random() * maxY);
+
+            botao.style.left = randomX + 'px';
+            botao.style.top = randomY + 'px';
+        }
+
+        // Gerador de Desculpas
+        function gerarDesculpa() {
+            const desculpas = [
+                "O piloto se perdeu no Waze vindo pro aeroporto.",
+                "Estamos esperando o avião terminar de carregar (é elétrico).",
+                "O co-piloto esqueceu o fone de ouvido em casa e voltou pra buscar.",
+                "Houve um engarrafamento de nuvens no oceano.",
+                "O avião está de castigo por ter chegado atrasado ontem.",
+                "Estamos procurando o dono do passaporte que caiu no motor.",
+                "A tripulação parou para um lanche rápido e não voltou."
+            ];
+            const sorteio = desculpas[Math.floor(Math.random() * desculpas.length)];
+            document.getElementById('txt-desculpa').innerText = "Status: " + sorteio;
         }
     </script>
 </body>
